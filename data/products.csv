@@ -1,0 +1,82 @@
+product_name,category,unit_cost_usd,unit_price_usd,supplier,unit
+Apple,Produce,0.3,0.89,US Foods,each
+Banana,Produce,0.15,0.49,US Foods,each
+Carrots,Produce,0.6,1.99,Sysco,lb
+Onions,Produce,0.4,1.29,Sysco,lb
+Orange,Produce,0.35,0.99,US Foods,each
+Potatoes,Produce,0.5,1.49,Sysco,lb
+Spinach,Produce,1.1,3.49,US Foods,bag
+Tomatoes,Produce,0.8,2.49,Sysco,lb
+Beef,Meat,5.2,12.99,Sysco,lb
+Chicken,Meat,2.1,5.99,Sysco,lb
+Salmon,Seafood,6.5,14.99,US Foods,lb
+Shrimp,Seafood,7.8,16.99,US Foods,lb
+Tuna,Seafood,3.4,8.49,Gordon FS,lb
+Butter,Dairy,2.2,4.99,Sysco,lb
+Cheese,Dairy,3.1,6.99,Sysco,lb
+Eggs,Dairy,2.4,4.49,Gordon FS,dozen
+Ice Cream,Dairy,2.8,5.99,Gordon FS,pint
+Milk,Dairy,1.2,2.99,Sysco,gallon
+Yogurt,Dairy,0.9,2.49,US Foods,each
+Bread,Bakery,1.3,3.49,Gordon FS,loaf
+Cereal,Bakery,2.1,4.99,US Foods,box
+Cereal Bars,Bakery,1.8,4.29,US Foods,box
+Pancake Mix,Bakery,1.5,3.79,Sysco,box
+Pasta,Bakery,0.8,2.29,Sysco,lb
+Rice,Bakery,0.6,1.89,Sysco,lb
+BBQ Sauce,Pantry,1.1,3.49,Gordon FS,bottle
+Canned Soup,Pantry,0.9,2.49,US Foods,can
+Coffee,Pantry,4.2,9.99,Gordon FS,bag
+Honey,Pantry,2.8,6.99,US Foods,jar
+Jam,Pantry,1.4,3.99,Gordon FS,jar
+Ketchup,Pantry,0.8,2.49,Sysco,bottle
+Mayonnaise,Pantry,1.2,3.29,Sysco,jar
+Mustard,Pantry,0.7,2.19,Sysco,bottle
+Olive Oil,Pantry,4.5,9.99,US Foods,bottle
+Peanut Butter,Pantry,1.6,3.99,Gordon FS,jar
+Pickles,Pantry,1.0,2.99,Gordon FS,jar
+Syrup,Pantry,2.1,4.99,US Foods,bottle
+Tea,Pantry,2.4,5.99,US Foods,box
+Vinegar,Pantry,0.8,2.29,Sysco,bottle
+Soda,Beverage,0.4,1.49,Gordon FS,can
+Water,Beverage,0.2,0.99,Sysco,bottle
+Chips,Snacks,0.9,2.99,Gordon FS,bag
+Deodorant,Personal Care,1.8,4.99,US Foods,each
+Feminine Hygiene Products,Personal Care,2.5,6.99,US Foods,pack
+Hair Gel,Personal Care,1.5,4.49,US Foods,each
+Hand Sanitizer,Personal Care,1.2,3.49,Gordon FS,each
+Razors,Personal Care,2.8,7.99,US Foods,pack
+Shampoo,Personal Care,1.9,5.49,US Foods,bottle
+Shaving Cream,Personal Care,1.4,3.99,Gordon FS,each
+Shower Gel,Personal Care,1.6,4.29,US Foods,bottle
+Soap,Personal Care,0.6,1.99,Sysco,bar
+Toothbrush,Personal Care,0.8,2.99,US Foods,each
+Toothpaste,Personal Care,1.1,3.49,US Foods,each
+Baby Wipes,Baby,2.1,5.99,US Foods,pack
+Diapers,Baby,8.5,22.99,US Foods,pack
+Air Freshener,Household,1.3,3.99,Gordon FS,each
+Cleaning Spray,Household,1.1,3.29,Gordon FS,each
+Dish Soap,Household,0.9,2.79,Gordon FS,bottle
+Laundry Detergent,Household,4.2,9.99,US Foods,box
+Paper Towels,Household,2.8,6.99,Sysco,roll
+Sponges,Household,0.8,2.49,Sysco,pack
+Tissues,Household,1.2,2.99,Sysco,box
+Toilet Paper,Household,3.1,7.49,Sysco,pack
+Trash Bags,Household,2.4,5.99,Sysco,box
+Broom,Cleaning Equipment,4.5,12.99,Gordon FS,each
+Cleaning Rags,Cleaning Equipment,1.2,3.49,Gordon FS,pack
+Dustpan,Cleaning Equipment,2.8,7.99,Gordon FS,each
+Mop,Cleaning Equipment,5.2,14.99,Gordon FS,each
+Bath Towels,Home,4.2,12.99,Gordon FS,each
+Dishware,Home,8.5,24.99,Gordon FS,set
+Extension Cords,Hardware,3.8,11.99,Gordon FS,each
+Garden Hose,Hardware,12.0,34.99,Gordon FS,each
+Insect Repellent,Seasonal,2.1,5.99,US Foods,each
+Iron,Appliance,14.0,39.99,Gordon FS,each
+Ironing Board,Appliance,18.0,49.99,Gordon FS,each
+Lawn Mower,Seasonal,95.0,249.99,Gordon FS,each
+Light Bulbs,Hardware,1.5,4.99,Gordon FS,pack
+Plant Fertilizer,Seasonal,3.2,8.99,Gordon FS,bag
+Power Strips,Hardware,4.5,12.99,Gordon FS,each
+Trash Cans,Home,6.8,19.99,Gordon FS,each
+Vacuum Cleaner,Appliance,45.0,129.99,Gordon FS,each

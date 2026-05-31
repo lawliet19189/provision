@@ -1,0 +1,195 @@
+{
+  "report_title": "Provision Weekly Intelligence Report",
+  "operator": "Marco",
+  "week": "2026-05-24 to 2026-05-30",
+  "prior_week": "2026-05-17 to 2026-05-23",
+  "generated_at": "2026-05-31",
+  "basis_note": "All dollar figures are directional proxies (unit_price x weekly appearance count for revenue; unit_cost x count for COGS). They show direction and relative size, not booked revenue. 30% of transactions are missing location metadata, so per-store figures are partial.",
+
+  "executive_summary": {
+    "headline": "Soft, steady week: traffic down ~3.7%, margin holding at ~63% -- but two staples (Cheese, Rice) likely stocked out and half your baskets are being discounted for zero lift.",
+    "the_60_second_read": "Demand cooled across the board (transactions 4,468 -> 4,301, -3.7%; units -3.9%) -- this is broad traffic softness, not one bad SKU. Blended gross margin held firm at 63.2% on ~$146.9K revenue proxy / ~$92.8K gross profit. Two things matter most this week: (1) Cheese (-42%) and Rice (-35%) didn't lose demand, they almost certainly stocked out -- check receiving today and recover the volume. (2) You're discounting ~49% of baskets with no measurable lift, which is a live margin leak. Underneath, the business leans on 5 durable-goods SKUs for half its gross profit, so the real growth lever is shifting mix toward repeat-purchase, high-margin consumables. Next PO is smaller and more selective at ~$8,176 at cost: load the dozen confirmed risers led by Diapers (+29%), and HOLD Cheese and Rice until you know why they cratered.",
+    "metrics": {
+      "transactions_this_week": 4301,
+      "transactions_prior_week": 4468,
+      "wow_transaction_change_pct": -3.74,
+      "wow_units_change_pct": -3.91,
+      "revenue_proxy_usd": 146861.82,
+      "cogs_proxy_usd": 54039.45,
+      "gross_profit_proxy_usd": 92822.37,
+      "blended_gross_margin_pct": 63.2,
+      "next_po_estimated_cost_usd": 8175.70
+    },
+    "strategic_narrative": "Ordering and margin tell one coherent story this week. The reorder list and the margin map line up cleanly: the items you want to buy more of (Diapers, Chips, Dish Soap, Shampoo) are also healthy-margin, so leaning into them grows demand AND profit. The one place they conflict is Shrimp -- ordering says reorder it (+13.7%), margin says it's a thin 54% perishable -- and the synthesis answer is to do both: reorder to demand AND price-test it up to $17.99. The two anomaly drops (Cheese, Rice) are an operations problem, not a demand or pricing problem, and they should be the first phone call Monday. The bigger structural truth behind a 'steady' headline is revenue volatility: 5 durable SKUs carry 51% of gross profit, so the durable shelf must never stock out, and the long game is converting traffic into high-margin consumable baskets."
+  },
+
+  "ordering_insights": {
+    "summary": "A disciplined, smaller PO into a softening week (~$8,176 at cost vs a broader buy last week). Concentrate spend on confirmed risers, override the rule to reorder Diapers, and hold the two anomaly drops. 15 order lines totaling ~$8,176.",
+    "headline_signal": "Diapers +29.46% WoW (129 -> 167) -- the week's single biggest mover. The reorder rule missed it by 1 unit (167 vs 168 cutoff) and the spike flag by 0.54pp (29.46% vs 30%). Both are threshold artifacts, not weak demand. Override and reorder; it's also the 6th-highest revenue SKU and a healthy 63% margin.",
+    "next_po_estimated_cost_usd": 8175.70,
+    "order_line_count": 15,
+    "buy_more": [
+      {"product": "Diapers", "wow_pct_change": 29.46, "margin_pct": 63.03, "recommended_qty": "225 units", "est_cost_usd": 1912.50, "urgency": "high", "rationale": "Biggest mover of the week and high-ticket Baby item ($22.99) -- stockouts unacceptable. Margin-healthy momentum buy."},
+      {"product": "Dish Soap", "wow_pct_change": 20.86, "margin_pct": 67.74, "recommended_qty": "200 units", "est_cost_usd": 180.00, "urgency": "high", "rationale": "Strongest trend in the confirmed reorder list and high-margin household staple; cheap to stock deep."},
+      {"product": "Shaving Cream", "wow_pct_change": 18.24, "margin_pct": 64.91, "recommended_qty": "205 units", "est_cost_usd": 287.00, "urgency": "high", "rationale": "Top-quartile velocity, clear upward consumable, healthy margin."},
+      {"product": "Shampoo", "wow_pct_change": 14.0, "margin_pct": 65.39, "recommended_qty": "195 units", "est_cost_usd": 370.50, "urgency": "high", "rationale": "Reliable personal-care repeat purchase, strong margin."},
+      {"product": "Power Strips", "wow_pct_change": 11.24, "margin_pct": 65.36, "recommended_qty": "210 units", "est_cost_usd": 945.00, "urgency": "high", "rationale": "Highest velocity in the confirmed list (188 units) and top revenue proxy ($2,442)."},
+      {"product": "Chips", "wow_pct_change": 12.34, "margin_pct": 69.90, "recommended_qty": "195 units", "est_cost_usd": 175.50, "urgency": "medium", "rationale": "Best margin in the reorder set (70%) AND growing -- a flat-out winner, stock deep and expand facings."},
+      {"product": "Dustpan", "wow_pct_change": 11.95, "margin_pct": 64.96, "recommended_qty": "195 units", "est_cost_usd": 546.00, "urgency": "medium", "rationale": "Top-quartile velocity, solid cleaning-equipment mover."},
+      {"product": "Honey", "wow_pct_change": 16.9, "margin_pct": 59.94, "recommended_qty": "190 units", "est_cost_usd": 532.00, "urgency": "medium", "rationale": "Near-miss climber (2 units under velocity cutoff), strong pantry trend."},
+      {"product": "Shrimp", "wow_pct_change": 13.7, "margin_pct": 54.09, "recommended_qty": "180 units", "est_cost_usd": 1404.00, "urgency": "medium", "rationale": "Reorder to demand only -- thin margin and perishable. See cross-report flag: pair the reorder with a price test."},
+      {"product": "Jam", "wow_pct_change": 14.18, "margin_pct": 64.91, "recommended_qty": "180 units", "est_cost_usd": 252.00, "urgency": "medium", "rationale": "Near-miss climber, healthy margin."},
+      {"product": "Trash Bags", "wow_pct_change": 11.56, "margin_pct": null, "recommended_qty": "180 units", "est_cost_usd": 432.00, "urgency": "medium", "rationale": "Near-miss climber, steady household consumable."},
+      {"product": "Tea", "wow_pct_change": 10.2, "margin_pct": null, "recommended_qty": "178 units", "est_cost_usd": 427.20, "urgency": "medium", "rationale": "Right at the trend threshold; modest top-up."}
+    ],
+    "maintain": [
+      {"product": "Toothpaste", "wow_pct_change": -15.96, "margin_pct": 68.48, "weekly_units": 279, "recommended_qty": "250 units", "est_cost_usd": 275.00, "note": "#1 volume SKU and basket anchor despite a pullback -- last week's 332 looks like a stock-up spike normalizing. Keep stocked, don't chase the peak, but investigate the dip (it's a traffic driver)."},
+      {"product": "Hair Gel", "wow_pct_change": 7.56, "margin_pct": 66.59, "weekly_units": 185, "recommended_qty": "190 units", "est_cost_usd": 285.00, "note": "2nd-highest velocity, strong steady seller -- keep shelves full."},
+      {"product": "Sponges", "wow_pct_change": 8.24, "margin_pct": 67.87, "weekly_units": 184, "recommended_qty": "190 units", "est_cost_usd": 152.00, "note": "3rd-highest velocity, cheap high-turn -- keep stocked."}
+    ],
+    "hold_or_trim": [
+      {"product": "Cheese", "wow_pct_change": -42.05, "action": "HOLD / INVESTIGATE", "note": "Do not reorder to prior levels until cause is known. Below-average margin makes over-ordering this perishable doubly risky."},
+      {"product": "Rice", "wow_pct_change": -35.33, "action": "HOLD / INVESTIGATE", "note": "Investigate before reordering -- sharp drop on a shelf-stable staple smells like a stockout, not lost demand."},
+      {"product": "Soft decliners (Iron -25.7%, Soap -20.1%, Insect Repellent -20.2%, Cereal -19.7%, Yogurt -19.3%, Hand Sanitizer -19.0%, BBQ Sauce -18.6%, Bread -18.3%)", "action": "REDUCE / TRIM", "note": "Trim reorder quantities to avoid dead stock on a soft week; revisit next week."}
+    ],
+    "seasonal_watch": "Insect Repellent (-20.2%) and Plant Fertilizer (-16.4%) faded despite heading into summer -- counter-seasonal and unexpected. Monitor one more week before adjusting seasonal buys; Lawn Mower roughly flat (-2.8%)."
+  },
+
+  "margin_insights": {
+    "summary": "Blended margin held at 63.2% -- but margins are engineered into a tight ~58-70% band for most SKUs, which means the handful of sub-56% items are the real, identifiable margin leaks where cost inflation has outrun shelf price. Dairy is the category to fix first: lowest margin (54.8%) AND shrinking across every SKU.",
+    "blended_gross_margin_pct": 63.2,
+    "margin_leaks_cost_inflation": [
+      {"product": "Eggs", "category": "Dairy", "margin_pct": 46.55, "price_usd": 4.49, "cost_usd": 2.40, "fix": "Reprice to $4.79-$4.99 and/or re-bid egg supply. The clear outlier -- 6.7pts below the next-worst SKU and ~17pts below the 63% house average. $4.79 alone lifts margin to ~50%."},
+      {"product": "Ice Cream", "category": "Dairy", "margin_pct": 53.26, "price_usd": 5.99, "cost_usd": 2.80, "fix": "Test $6.29; review supplier cost. Watch for seasonal pickup into summer before discounting."},
+      {"product": "Shrimp", "category": "Seafood", "margin_pct": 54.09, "price_usd": 16.99, "cost_usd": 7.80, "fix": "Demand is up +13.7% -- price-test to $17.99 (-> ~57% margin); the trend says it won't dent volume."},
+      {"product": "Olive Oil", "category": "Pantry", "margin_pct": 54.95, "price_usd": 9.99, "cost_usd": 4.50, "fix": "Move to $10.99 (-> ~59%). Market-wide olive-oil inflation makes the increase defensible and low-risk on a price-inelastic premium item."},
+      {"product": "Cheese", "category": "Dairy", "margin_pct": 55.65, "price_usd": 6.99, "cost_usd": 3.10, "fix": "Availability problem dwarfs the pricing problem this week (-42% volume). Verify stock first, revisit price only after volume recovers."},
+      {"product": "Salmon", "category": "Seafood", "margin_pct": 56.64, "price_usd": 14.99, "cost_usd": 6.50, "fix": "Modest price test to $15.49 given steady +5.5% demand; monitor against Shrimp cross-shift."}
+    ],
+    "high_margin_winners_to_grow": [
+      {"product": "Chips", "margin_pct": 69.90, "wow_pct_change": 12.34, "note": "Best-in-class: 70% margin AND +12% growth. Expand facings and add checkout/impulse placement."},
+      {"product": "Toothpaste", "margin_pct": 68.48, "weekly_units": 279, "wow_pct_change": -15.96, "note": "#1 volume at 68% margin -- a basket anchor and traffic driver; protect it and investigate the 16% dip."},
+      {"category": "Beverage + Snacks", "blended_margin_pct": 75.9, "note": "Highest-margin categories (Water 79.8%, Soda 73.2%, Chips 69.9%) but among the smallest in revenue. Front-of-store impulse merchandising lifts blended margin with little price resistance."},
+      {"category": "Produce", "blended_margin_pct": 68.0, "note": "68% margin on only ~$2K revenue -- under-monetized; promote fresh-produce baskets to shift mix toward high-margin repeat purchases."}
+    ],
+    "structural_risk": {
+      "revenue_concentration": "5 durable-goods SKUs (Lawn Mower, Vacuum Cleaner, Ironing Board, Iron, Garden Hose) = ~$47.0K of ~$92.8K gross profit (51%) and ~50% of revenue. All are one-time, non-repeat purchases. This is revenue VOLATILITY risk, not a margin-mix problem -- the rest of the catalog still runs ~63% margin.",
+      "implication": "A single Lawn Mower or Vacuum stockout hits the P&L harder than any consumable. Protect durable-goods availability above all, and de-risk over time by growing repeat-purchase consumable baskets.",
+      "lawn_mower_note": "Lawn Mower alone is 24% of revenue proxy and 24% of gross profit. The 'Seasonal' category is essentially this one SKU."
+    },
+    "promotion_leak": "Nearly half of transactions carry a discount (2,121 of 4,301 = 49.3%), yet discounted baskets average $52.93 in COGS vs $51.74 for undiscounted -- discounted baskets are 2.3% LARGER, not smaller. There's no evidence the promo drives incremental lift; margin is being given away to customers who were buying anyway. (Caveat: the feed exposes basket COGS only, so exact giveaway can't be sized, but the direction is wrong.) Fix: replace blanket discounts with threshold/targeted offers and measure against incremental REVENUE, not cost."
+  },
+
+  "combined_recommendations": [
+    {
+      "theme": "Ops first: recover lost volume",
+      "ordering_signal": "Cheese -42% and Rice -35% flagged as anomaly drops; HOLD reorders.",
+      "margin_implication": "Both reports agree the drops read as stockouts, not demand loss. Cheese is also low-margin (55.7%), so the loss is an operational miss, not a pricing one.",
+      "combined_action": "Check Cheese and Rice availability/receiving/spoilage TODAY. Recover the volume before adjusting either price or reorder quantity."
+    },
+    {
+      "theme": "Buy the winners, and they're high-margin too",
+      "ordering_signal": "Diapers (+29%), Chips (+12%), Dish Soap (+21%), Shampoo (+14%) lead the reorder list.",
+      "margin_implication": "These risers also carry 63-70% margins -- demand momentum and profit momentum point the same way.",
+      "combined_action": "Load the full PO on these risers. Specifically expand Chips facings/checkout placement (70% margin + growth) and protect Diapers stock with Baby Wipes attach."
+    },
+    {
+      "theme": "Shrimp: reorder AND reprice (the one cross-signal conflict)",
+      "ordering_signal": "Reorder candidate, +13.7% WoW, $2,820 revenue proxy.",
+      "margin_implication": "Only 54.09% margin and perishable -- a margin leak the ordering side wants to buy more of.",
+      "combined_action": "Reorder to demand only (don't overbuy a perishable), and pair it with a price test to $17.99 (-> ~57% margin). Rising demand means the increase is unlikely to dent volume."
+    },
+    {
+      "theme": "Fix Dairy at the category level",
+      "ordering_signal": "Cheese -42%, Yogurt -19%, plus broad dairy softness.",
+      "margin_implication": "Dairy is the LOWEST-margin category (54.8%) AND shrinking across every SKU -- double jeopardy.",
+      "combined_action": "Renegotiate dairy supply as a category rather than fixing six SKUs one at a time. Reprice Eggs ($4.49 -> $4.79+) as the standout outlier."
+    },
+    {
+      "theme": "Stop the discount leak",
+      "ordering_signal": "Promotions are accretive to ticket on the surface (+2.3% basket).",
+      "margin_implication": "But ~49% of baskets are discounted with no measurable incremental lift -- you're rewarding buyers who'd purchase anyway.",
+      "combined_action": "Convert blanket discounts to threshold/targeted offers (unlock above a basket size, or target lapsing customers / slow-moving high-margin SKUs) and instrument against incremental revenue."
+    },
+    {
+      "theme": "De-risk revenue concentration",
+      "ordering_signal": "Spend is concentrated in consumables; durables aren't in the reorder cycle but carry the P&L.",
+      "margin_implication": "5 durable SKUs = 51% of gross profit; a single durable stockout outweighs any consumable.",
+      "combined_action": "Guard durable-goods availability above all, and grow repeat-purchase margin by mix-shifting toward Beverage (76%), Snacks (70%) and Produce (68%) via front-of-store merchandising."
+    }
+  ],
+
+  "anomalies_and_alerts": {
+    "count": 4,
+    "rule": "Hard flag at abs(WoW) > 30%; spike if positive, drop if negative. Near-misses called out manually.",
+    "items": [
+      {"product": "Cheese", "type": "drop", "change_pct": -42.05, "detail": "195 -> 113 units. A dairy staple doesn't lose 42% organically in a week -- strongly suggests stockout/supply gap/spoilage write-off. HIGHEST PRIORITY: check availability today. Both reports agree: hold reorder until cause is known.", "priority": "critical"},
+      {"product": "Rice", "type": "drop", "change_pct": -35.33, "detail": "184 -> 119 units. Same pattern on a shelf-stable staple -- reads as out-of-stock or supplier miss, not demand. Verify on-hand. Note: Rice is miscategorized as 'Bakery' in the feed.", "priority": "critical"},
+      {"product": "Diapers", "type": "spike (near-miss flag)", "change_pct": 29.46, "detail": "129 -> 167, biggest gainer of the week. Missed the +30% spike flag by 0.54pp AND the reorder velocity cutoff by 1 unit -- treat as a de-facto spike and reorder. Capture attach sales (Baby Wipes).", "priority": "high"},
+      {"product": "Iron", "type": "drop (below threshold)", "change_pct": -25.67, "detail": "187 -> 139. Below the 30% alert line but notable on a high-revenue durable ($5,559, 4th-largest gross profit). Confirm it's demand, not availability, given how much profit appliances carry.", "priority": "medium"}
+    ],
+    "no_positive_spikes_over_threshold": "No SKU crossed +30% this week; Diapers (+29.46%) was the closest."
+  },
+
+  "location_performance": {
+    "summary": "Among named stores, basket economics are nearly uniform ($51.43-$53.53 COGS) -- there's no standout strong or weak store on the data available. The real story is a data gap: ~30% of transactions can't be attributed to any store, which blinds true location P&L.",
+    "named_stores": [
+      {"location_id": "LOC004", "store": "Marco's Los Angeles", "transactions": 445, "avg_basket_cogs_usd": 52.40, "note": "Highest named-store volume; solid."},
+      {"location_id": "LOC005", "store": "Marco's San Francisco", "transactions": 419, "avg_basket_cogs_usd": 53.53, "note": "Richest basket among named stores (highest avg COGS)."},
+      {"location_id": "LOC006", "store": "Marco's Chicago (Warehouse Club)", "transactions": null, "avg_basket_cogs_usd": 51.43, "note": "Lowest avg basket cost, consistent with the warehouse-club format."},
+      {"location_id": "LOC010", "store": "Marco's Miami", "transactions": 405, "avg_basket_cogs_usd": 51.58, "note": "Lowest volume and near-lowest basket cost -- softest named store this week."}
+    ],
+    "critical_data_gap": {
+      "location_id": "LOC_OTHER",
+      "transactions": 1312,
+      "pct_of_total": 30.5,
+      "issue": "1,312 transactions (30.5% of all 4,301) have NO location metadata -- name, city, state, and store type are all null. Nearly a third of the business cannot be attributed to a store.",
+      "limitation": "The feed gives per-location transaction count and basket COGS only -- no revenue or margin by store -- so true location profitability cannot be ranked. Add per-location revenue to enable store-level margin decisions."
+    }
+  },
+
+  "data_quality_notes": [
+    "PROXY MODEL: All revenue/COGS/gross-profit figures are directional proxies (unit_price/unit_cost x weekly appearance count), not booked financials. Use for direction and relative size, not exact P&L.",
+    "LOCATION GAP: 1,312 transactions (30.5%) carry null location metadata (LOC_OTHER) -- the top data-quality fix; it blinds any per-store P&L and limits PO splitting by store.",
+    "NO PER-STORE REVENUE/MARGIN: The feed exposes per-location transaction count and basket COGS only. Add per-location revenue to enable store-level margin ranking.",
+    "PROMO DEPTH MISSING: The feed exposes basket COGS but not revenue or discount depth, so the exact discount giveaway can't be sized -- only its (wrong) direction.",
+    "MISCATEGORIZATION: Rice is labeled 'Bakery' in the feed but is a grain/pantry staple -- recategorize so category analytics aren't skewed.",
+    "NO SUPPLIER MASTER: raw_metrics.json has no supplier table; supplier names on PO lines are category-based channel guesses and must be confirmed against the products/supplier table before issuing POs.",
+    "THRESHOLD ARTIFACTS: Hard cutoffs hid the week's strongest signal -- Diapers missed both the reorder velocity cutoff (by 1 unit) and the spike flag (by 0.54pp). Consider softening hard thresholds or adding a near-miss review band."
+  ],
+
+  "operator_action_items": [
+    {
+      "priority": 1,
+      "action": "Check Cheese (-42%) and Rice (-35%) availability/receiving/spoilage TODAY before the next order.",
+      "why": "Staples don't lose 35-42% of demand organically in a week -- this reads as a stockout or supplier miss. Recover the lost volume now; both reports say HOLD the reorder until you know the cause. This is operational lost sales, not weak demand.",
+      "category": "operations"
+    },
+    {
+      "priority": 2,
+      "action": "Greenlight the selective ~$8,176 PO -- load Diapers (+29%, 225 units), Power Strips, Dish Soap, Shaving Cream, Shampoo, Chips -- and TRIM the eight soft decliners.",
+      "why": "Demand softened 3.7% WoW, so this is a smaller, more disciplined buy. The risers are also high-margin (63-70%), so leaning in grows demand and profit together. Override the rule to include Diapers -- it was excluded by 1 unit despite being the week's biggest mover and 6th-highest revenue SKU.",
+      "category": "ordering"
+    },
+    {
+      "priority": 3,
+      "action": "Reprice the cost-inflation outliers: Eggs $4.49 -> $4.79+ (46.6% -> ~50%), Olive Oil $9.99 -> $10.99 (-> ~59%), Ice Cream test $6.29, and Shrimp $16.99 -> $17.99 (-> ~57%).",
+      "why": "These sub-56% SKUs are the real margin leaks where commodity cost has outrun shelf price. Eggs is 17pts below your house average -- the clearest fix. Shrimp is special: ordering wants to reorder it (+13.7%) AND margin says raise price, so do both -- rising demand means the increase won't dent volume.",
+      "category": "pricing"
+    },
+    {
+      "priority": 4,
+      "action": "Fix the discount program: ~49% of baskets are discounted with zero measurable lift. Convert blanket discounts to threshold/targeted offers and measure against incremental revenue.",
+      "why": "Discounted baskets actually run 2.3% LARGER, meaning the promo rewards customers who'd buy anyway -- a live margin leak on half your transactions. Targeting (unlock above a basket size, or target lapsing customers / slow high-margin SKUs) recovers the giveaway.",
+      "category": "pricing"
+    },
+    {
+      "priority": 5,
+      "action": "Renegotiate Dairy supply as a category and protect durable-goods stock; mix-shift toward high-margin consumables (Chips/Beverage/Produce).",
+      "why": "Dairy is your lowest-margin category (54.8%) AND shrinking everywhere -- fix it at the supply level, not SKU by SKU. Separately, 5 durable SKUs carry 51% of gross profit, so a Lawn Mower or Vacuum stockout hurts most -- guard their availability, and grow repeat-purchase margin via front-of-store impulse placement of Chips (70%), Beverage (76%) and Produce (68%).",
+      "category": "strategic"
+    }
+  ],
+
+  "marco_tldr": "Margin's steady at ~63%, but go check why Cheese and Rice fell off a cliff (35-42% drops are stockouts, not lost demand), greenlight the lean ~$8,176 order led by Diapers, nudge Eggs and Olive Oil prices up, and rein in the blanket discounts hitting half your baskets for zero extra sales."
+}

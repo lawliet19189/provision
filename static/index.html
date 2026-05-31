@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Provision — Weekly Intelligence</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --bg: #0f1117;
+      --surface: #1a1d27;
+      --border: #2a2d3a;
+      --accent: #6c63ff;
+      --accent2: #00d4aa;
+      --warn: #ff6b6b;
+      --text: #e8eaf0;
+      --muted: #8890a4;
+      --green: #4caf82;
+      --yellow: #f5a623;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
+    header { padding: 24px 32px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-size: 22px; font-weight: 700; letter-spacing: -0.5px; }
+    .logo span { color: var(--accent); }
+    .week-badge { font-size: 13px; color: var(--muted); background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 4px 12px; }
+
+    .tldr-bar { background: linear-gradient(135deg, #1e1a3a, #1a2535); border-bottom: 1px solid var(--border); padding: 16px 32px; display: flex; gap: 12px; align-items: flex-start; }
+    .tldr-label { font-size: 11px; font-weight: 700; letter-spacing: 1px; color: var(--accent); text-transform: uppercase; white-space: nowrap; padding-top: 2px; }
+    .tldr-text { font-size: 15px; line-height: 1.5; color: var(--text); }
+
+    main { padding: 28px 32px; max-width: 1400px; margin: 0 auto; }
+
+    .kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px; }
+    .kpi { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+    .kpi-label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+    .kpi-value { font-size: 28px; font-weight: 700; letter-spacing: -1px; }
+    .kpi-delta { font-size: 13px; margin-top: 4px; }
+    .up { color: var(--green); }
+    .down { color: var(--warn); }
+    .neutral { color: var(--muted); }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+    .span-2 { grid-column: span 2; }
+
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+    .card-title { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+    .card-title .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+
+    .action-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .action-item { display: flex; gap: 12px; align-items: flex-start; }
+    .action-num { background: var(--accent); color: #fff; font-size: 11px; font-weight: 700; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+    .action-text { font-size: 14px; line-height: 1.5; }
+    .action-why { font-size: 12px; color: var(--muted); margin-top: 3px; }
+
+    .anomaly-list { display: flex; flex-direction: column; gap: 10px; }
+    .anomaly { display: flex; gap: 10px; align-items: flex-start; padding: 12px; border-radius: 8px; border: 1px solid var(--border); }
+    .anomaly.critical { border-color: #ff6b6b44; background: #ff6b6b08; }
+    .anomaly.high { border-color: #f5a62344; background: #f5a62308; }
+    .anomaly.medium { border-color: #4caf8244; background: #4caf8208; }
+    .anomaly-badge { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
+    .badge-drop { background: #ff6b6b22; color: var(--warn); }
+    .badge-spike { background: #4caf8222; color: var(--green); }
+    .anomaly-product { font-size: 14px; font-weight: 600; }
+    .anomaly-pct { font-size: 13px; font-weight: 700; }
+    .anomaly-detail { font-size: 12px; color: var(--muted); margin-top: 3px; line-height: 1.4; }
+
+    .margin-leak-row { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+    .margin-leak-row:last-child { border-bottom: none; }
+    .ml-product { font-size: 14px; font-weight: 500; flex: 1; }
+    .ml-bar-wrap { flex: 2; }
+    .ml-bar-bg { height: 6px; background: var(--border); border-radius: 3px; }
+    .ml-bar { height: 6px; border-radius: 3px; }
+    .ml-pct { font-size: 13px; font-weight: 700; width: 44px; text-align: right; }
+    .ml-fix { font-size: 11px; color: var(--muted); flex: 2; line-height: 1.3; }
+
+    .order-row { display: flex; align-items: center; gap: 10px; padding: 9px 0; border-bottom: 1px solid var(--border); }
+    .order-row:last-child { border-bottom: none; }
+    .or-product { font-size: 14px; font-weight: 500; flex: 1; }
+    .or-trend { font-size: 13px; font-weight: 700; width: 60px; text-align: right; }
+    .or-urgency { font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 4px; text-transform: uppercase; }
+    .urg-high { background: #ff6b6b22; color: var(--warn); }
+    .urg-medium { background: #f5a62322; color: var(--yellow); }
+    .urg-low { background: #4caf8222; color: var(--green); }
+    .or-qty { font-size: 12px; color: var(--muted); flex: 1.2; }
+
+    .location-row { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+    .location-row:last-child { border-bottom: none; }
+    .loc-name { font-size: 14px; font-weight: 500; flex: 2; }
+    .loc-tx { font-size: 13px; color: var(--muted); width: 70px; text-align: right; }
+    .loc-basket { font-size: 13px; font-weight: 600; width: 70px; text-align: right; }
+
+    .chart-wrap { position: relative; height: 220px; }
+
+    .promo-stat { text-align: center; padding: 16px; }
+    .promo-big { font-size: 42px; font-weight: 700; color: var(--warn); }
+    .promo-label { font-size: 13px; color: var(--muted); margin-top: 4px; }
+    .promo-desc { font-size: 13px; color: var(--text); margin-top: 12px; line-height: 1.5; }
+
+    .loading { text-align: center; padding: 80px; color: var(--muted); font-size: 16px; }
+    .error { color: var(--warn); }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">pro<span>vision</span></div>
+    <div class="week-badge" id="week-badge">Loading...</div>
+  </header>
+
+  <div class="tldr-bar">
+    <div class="tldr-label">TL;DR</div>
+    <div class="tldr-text" id="tldr">Loading intelligence report...</div>
+  </div>
+
+  <main id="main">
+    <div class="loading">Loading report...</div>
+  </main>
+
+  <script>
+    async function load() {
+      const res = await fetch('/api/report/summary');
+      if (!res.ok) { document.getElementById('main').innerHTML = '<div class="loading error">Failed to load report.</div>'; return; }
+      const d = await res.json();
+      render(d);
+    }
+
+    function render(d) {
+      document.getElementById('week-badge').textContent = `Week of ${d.week}`;
+      document.getElementById('tldr').textContent = d.marco_tldr;
+
+      const m = d.metrics;
+      const txDelta = m.wow_transaction_change_pct;
+      const main = document.getElementById('main');
+
+      main.innerHTML = `
+        <!-- KPIs -->
+        <div class="kpi-row">
+          <div class="kpi">
+            <div class="kpi-label">Transactions</div>
+            <div class="kpi-value">${m.transactions_this_week.toLocaleString()}</div>
+            <div class="kpi-delta ${txDelta >= 0 ? 'up' : 'down'}">${txDelta >= 0 ? '▲' : '▼'} ${Math.abs(txDelta).toFixed(1)}% vs last week</div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-label">Revenue Proxy</div>
+            <div class="kpi-value">$${(m.revenue_proxy_usd/1000).toFixed(1)}K</div>
+            <div class="kpi-delta neutral">Directional estimate</div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-label">Gross Margin</div>
+            <div class="kpi-value" style="color:var(--accent2)">${m.blended_gross_margin_pct.toFixed(1)}%</div>
+            <div class="kpi-delta neutral">Holding steady</div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-label">Next PO Estimate</div>
+            <div class="kpi-value">$${(m.next_po_estimated_cost_usd/1000).toFixed(1)}K</div>
+            <div class="kpi-delta neutral">${d.order_highlights.length} priority lines</div>
+          </div>
+        </div>
+
+        <!-- Row 1: Actions + Anomalies -->
+        <div class="grid-2" style="margin-bottom:20px">
+          <div class="card">
+            <div class="card-title"><span class="dot" style="background:var(--accent)"></span>Top Actions This Week</div>
+            <ul class="action-list" id="actions-list"></ul>
+          </div>
+          <div class="card">
+            <div class="card-title"><span class="dot" style="background:var(--warn)"></span>Anomalies & Alerts</div>
+            <div class="anomaly-list" id="anomaly-list"></div>
+          </div>
+        </div>
+
+        <!-- Row 2: Margin chart + Margin leaks -->
+        <div class="grid-2" style="margin-bottom:20px">
+          <div class="card">
+            <div class="card-title"><span class="dot" style="background:var(--accent2)"></span>Top Margin Products</div>
+            <div class="chart-wrap"><canvas id="marginChart"></canvas></div>
+          </div>
+          <div class="card">
+            <div class="card-title"><span class="dot" style="background:var(--warn)"></span>Margin Leaks to Fix</div>
+            <div id="margin-leaks"></div>
+          </div>
+        </div>
+
+        <!-- Row 3: Order list + WoW chart + Promo -->
+        <div class="grid-3" style="margin-bottom:20px">
+          <div class="card">
+            <div class="card-title"><span class="dot" style="background:var(--accent)"></span>Order Now</div>
+            <div id="order-list"></div>
+          </div>
+          <div class="card">
+            <div class="card-title"><span class="dot" style="background:var(--yellow)"></span>Week-over-Week Demand</div>
+            <div class="chart-wrap"><canvas id="wowChart"></canvas></div>
+          </div>
+          <div class="card">
+            <div class="card-title"><span class="dot" style="background:var(--warn)"></span>Discount Leak</div>
+            <div class="promo-stat">
+              <div class="promo-big">49%</div>
+              <div class="promo-label">of baskets discounted</div>
+              <div class="promo-desc">${d.promotion_leak.slice(0, 180)}...</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 4: Locations -->
+        <div class="card" style="margin-bottom:20px">
+          <div class="card-title"><span class="dot" style="background:var(--accent2)"></span>Location Performance</div>
+          <div id="location-list"></div>
+        </div>
+      `;
+
+      // Actions
+      const actionsList = document.getElementById('actions-list');
+      d.actions.forEach(a => {
+        actionsList.innerHTML += `
+          <li class="action-item">
+            <div class="action-num">${a.priority}</div>
+            <div>
+              <div class="action-text">${a.action}</div>
+              <div class="action-why">${a.why.slice(0, 120)}${a.why.length > 120 ? '...' : ''}</div>
+            </div>
+          </li>`;
+      });
+
+      // Anomalies
+      const anomalyList = document.getElementById('anomaly-list');
+      d.anomalies.forEach(a => {
+        const pct = a.change_pct;
+        const isSpike = pct > 0;
+        anomalyList.innerHTML += `
+          <div class="anomaly ${a.priority || 'medium'}">
+            <span class="anomaly-badge ${isSpike ? 'badge-spike' : 'badge-drop'}">${a.type}</span>
+            <div>
+              <div style="display:flex;align-items:center;gap:8px">
+                <span class="anomaly-product">${a.product}</span>
+                <span class="anomaly-pct ${isSpike ? 'up' : 'down'}">${pct > 0 ? '+' : ''}${pct.toFixed(1)}%</span>
+              </div>
+              <div class="anomaly-detail">${a.detail.slice(0, 140)}${a.detail.length > 140 ? '...' : ''}</div>
+            </div>
+          </div>`;
+      });
+
+      // Margin leaks bar list
+      const leaksEl = document.getElementById('margin-leaks');
+      d.margin_leaks.forEach(l => {
+        const pct = l.margin_pct;
+        const color = pct < 50 ? 'var(--warn)' : pct < 58 ? 'var(--yellow)' : 'var(--accent2)';
+        leaksEl.innerHTML += `
+          <div class="margin-leak-row">
+            <div class="ml-product">${l.product}</div>
+            <div class="ml-bar-wrap">
+              <div class="ml-bar-bg"><div class="ml-bar" style="width:${pct}%;background:${color}"></div></div>
+            </div>
+            <div class="ml-pct" style="color:${color}">${pct.toFixed(1)}%</div>
+            <div class="ml-fix">${l.fix.slice(0, 80)}${l.fix.length > 80 ? '...' : ''}</div>
+          </div>`;
+      });
+
+      // Order list
+      const orderEl = document.getElementById('order-list');
+      d.order_highlights.forEach(b => {
+        const urg = b.urgency || 'medium';
+        orderEl.innerHTML += `
+          <div class="order-row">
+            <div class="or-product">${b.product}</div>
+            <div class="or-trend up">+${b.wow_pct_change.toFixed(1)}%</div>
+            <div class="or-urgency urg-${urg}">${urg}</div>
+          </div>`;
+      });
+
+      // Locations
+      const locEl = document.getElementById('location-list');
+      d.locations.forEach(l => {
+        if (!l.store) return;
+        locEl.innerHTML += `
+          <div class="location-row">
+            <div class="loc-name">${l.store}</div>
+            <div class="loc-tx">${l.transactions ? l.transactions.toLocaleString() : '—'} tx</div>
+            <div class="loc-basket" style="color:var(--accent2)">$${(l.avg_basket_cogs_usd || 0).toFixed(2)}</div>
+            <div style="font-size:12px;color:var(--muted);flex:2">${l.note || ''}</div>
+          </div>`;
+      });
+
+      // Margin chart — top winners
+      const winners = d.top_margin_winners
+        .filter(w => w.margin_pct || w.blended_margin_pct)
+        .slice(0, 6);
+      new Chart(document.getElementById('marginChart'), {
+        type: 'bar',
+        data: {
+          labels: winners.map(w => w.product || w.category),
+          datasets: [{
+            data: winners.map(w => w.margin_pct || w.blended_margin_pct),
+            backgroundColor: '#6c63ff88',
+            borderColor: '#6c63ff',
+            borderWidth: 1,
+            borderRadius: 4,
+          }]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: {
+            x: { ticks: { color: '#8890a4', font: { size: 11 } }, grid: { color: '#2a2d3a' } },
+            y: { ticks: { color: '#8890a4', callback: v => v + '%' }, grid: { color: '#2a2d3a' }, min: 50, max: 85 }
+          }
+        }
+      });
+
+      // WoW demand chart — top movers
+      const movers = d.order_highlights.slice(0, 7);
+      new Chart(document.getElementById('wowChart'), {
+        type: 'bar',
+        data: {
+          labels: movers.map(b => b.product),
+          datasets: [{
+            label: 'WoW %',
+            data: movers.map(b => b.wow_pct_change),
+            backgroundColor: movers.map(b => b.wow_pct_change >= 0 ? '#4caf8266' : '#ff6b6b66'),
+            borderColor: movers.map(b => b.wow_pct_change >= 0 ? '#4caf82' : '#ff6b6b'),
+            borderWidth: 1,
+            borderRadius: 4,
+          }]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: {
+            x: { ticks: { color: '#8890a4', font: { size: 11 } }, grid: { color: '#2a2d3a' } },
+            y: { ticks: { color: '#8890a4', callback: v => v + '%' }, grid: { color: '#2a2d3a' } }
+          }
+        }
+      });
+    }
+
+    load();
+  </script>
+</body>
+</html>

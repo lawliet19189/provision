@@ -1,0 +1,11 @@
+location_id,location_name,city,state,store_type
+LOC001,Marco's — Back Bay,Boston,MA,Supermarket
+LOC002,Marco's — South End,Boston,MA,Supermarket
+LOC003,Marco's — Cambridge,Cambridge,MA,Specialty Store
+LOC004,Marco's — Los Angeles,Los Angeles,CA,Supermarket
+LOC005,Marco's — San Francisco,San Francisco,CA,Specialty Store
+LOC006,Marco's — Chicago,Chicago,IL,Warehouse Club
+LOC007,Marco's — Houston,Houston,TX,Supermarket
+LOC008,Marco's — Phoenix,Phoenix,AZ,Convenience Store
+LOC009,Marco's — Seattle,Seattle,WA,Specialty Store
+LOC010,Marco's — Miami,Miami,FL,Department Store
