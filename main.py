@@ -1,9 +1,12 @@
 import json
+import os
 from pathlib import Path
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
+from pydantic import BaseModel
+import anthropic
 
 app = FastAPI()
 
@@ -118,6 +121,41 @@ BOTTOM LINE: {r['marco_tldr']}
             "top_buys": [{"product": b["product"], "wow_pct_change": b["wow_pct_change"], "urgency": b["urgency"]} for b in ordering["buy_more"][:5]],
         },
     }
+
+
+# ── Ask endpoint (ElevenLabs generic tool) ───────────────────────────────────
+
+class AskRequest(BaseModel):
+    question: str
+
+@app.post("/api/ask")
+def ask(req: AskRequest):
+    """
+    Generic Q&A endpoint for ElevenLabs.
+    Loads the full intelligence report as context, answers Marco's question
+    in 2-3 spoken sentences.
+    """
+    r = load_report()
+    report_text = json.dumps(r, indent=2)
+
+    claude = anthropic.Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
+    response = claude.messages.create(
+        model="claude-haiku-4-5",
+        max_tokens=300,
+        system="""You are Provision, an AI inventory intelligence assistant for restaurant operator Marco.
+You have access to this week's full intelligence report.
+Answer Marco's question in 2-3 concise spoken sentences — no bullet points, no markdown.
+Be direct and specific. Use numbers from the report when relevant.
+If the answer isn't in the report, say so briefly.""",
+        messages=[
+            {
+                "role": "user",
+                "content": f"Intelligence report:\n{report_text}\n\nMarco's question: {req.question}"
+            }
+        ]
+    )
+    answer = response.content[0].text
+    return {"answer": answer, "question": req.question}
 
 
 # ── Legacy endpoints (kept for compatibility) ─────────────────────────────────
