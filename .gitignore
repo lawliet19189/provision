@@ -1,0 +1,11 @@
+.env
+__pycache__/
+*.pyc
+agents/intelligence/*.json
+data/transactions.csv
+data/Retail_Transactions_Dataset.csv
+data/products.csv
+data/locations.csv
+data/city_to_location.csv
+# Keep data/intelligence/weekly_report.json committed
+
