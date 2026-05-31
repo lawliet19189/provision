@@ -1,2 +1,5 @@
 fastapi
 uvicorn[standard]
+anthropic>=0.105.0
+psycopg2-binary
+python-multipart
